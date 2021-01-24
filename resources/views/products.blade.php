@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <title>Laravel SSO</title>
+    <title>Laravel</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -38,31 +38,14 @@
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
+                                {{-- <th scope="col">#</th> --}}
                                 <th scope="col">Nama Produk</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Deskripsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if($products->count())
-                            
-                            @foreach($products as $product)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$product->product_name}}</td>
-                                    <td>$ {{$product->price}}</td>
-                                    <td>{{Str::limit($product->description, 30, '...')}}</td>
-                                </tr>
-                            @endforeach
-                            
-                            @else
-                            <tr>
-                                <td colspan="4" align="center">
-                                    Produk Kosong
-                                </td>
-                            </tr>
-                            @endif
+                            @each('data-product', $products, 'product', 'no-product')
                         </tbody>
                     </table>
                 </div>
